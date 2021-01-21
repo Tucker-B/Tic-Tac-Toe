@@ -21,9 +21,12 @@
             // rowString += board[i][j];
             // const container = document.querySelector(`#row-${i+1}-span-${j+1}`);
             // container.textContent = board[i][j];
-            
+
         }
         // console.log(rowString);
     }
 })();
 
+const Player = (name, playSymbol) => {
+    return { name, playSymbol };
+}
