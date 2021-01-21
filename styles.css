@@ -22,6 +22,11 @@ p {
     visibility: hidden;
 }
 
+#player1-input-form{
+    text-align: center;
+    visibility: hidden;
+}
+
 .row {
     padding-bottom: 5px;
     font-size: xx-large;

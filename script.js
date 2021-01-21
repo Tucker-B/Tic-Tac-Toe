@@ -1,4 +1,5 @@
 
+import {board} from "./gameboard.js";
 
 /*
     1. Store gameboard as an array inside of a Gameboard object
@@ -12,24 +13,6 @@
 function Player(name, playSymbol) {
     return { name, playSymbol };
 }
-
-(function gameBoard() {
-    let board = [];
-
-    // Populates board array with 'B' ([B]lank spaces)
-    for (let i = 0; i < 3; i++) {
-        board[i] = [];
-        // let rowString = "";
-        for (let j = 0; j < 3; j++) {
-            board[i][j] = 'B';
-            // rowString += board[i][j];
-            // const container = document.querySelector(`#row-${i+1}-span-${j+1}`);
-            // container.textContent = board[i][j];
-
-        }
-        // console.log(rowString);
-    }
-})();
 
 (function playGame() {
     // How the game will play out
@@ -68,7 +51,12 @@ function Player(name, playSymbol) {
 
         let main_div = document.querySelector("#main-div");
         main_div.style.visibility = "visible";
+
+        let input_form = document.querySelector("#player1-input-form");
+        input_form.style.visibility = "visible";
    
+        
+
     });
 
 })();

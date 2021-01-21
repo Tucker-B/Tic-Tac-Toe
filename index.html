@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Tic Tac Toe!</title>
 </head>
 <body>
     <h1>Tic Tac Toe!</h1>
@@ -19,6 +20,14 @@
         <input type="text" name="playerSymbol" id="playerSymbol">
         <br>
         <button id="gameStartButton" type="button">Start Game!</button>
+    </form>
+
+    <form id="player1-input-form" action="">
+        <label for="player1-row-input">Player 1 Row Input:</label>
+        <input type="text" name="player1-row-input" id="player1-row-input">
+        <br>
+        <label for="player1-column-input">Player 1 Column Input:</label>
+        <input type="text" name="player1-column-input" id="player1-column-input">
     </form>
 
     <div id="main-div">
@@ -38,6 +47,7 @@
             <span id="row-3-span-3">B</span>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="script.js" type="module"></script>
 </body>
 </html>
