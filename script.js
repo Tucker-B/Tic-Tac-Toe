@@ -27,8 +27,8 @@ function Player(name, playSymbol) {
     
     let player1;
 
-    const button = document.querySelector("#gameStartButton");
-    button.addEventListener("click", () => {
+    const gameStartButton = document.querySelector("#gameStartButton");
+    gameStartButton.addEventListener("click", () => {
 
         let main_form = document.querySelector("#main-form");
         // !! player1 = Player(playerName, playerGameSymbol)
@@ -54,9 +54,33 @@ function Player(name, playSymbol) {
 
         let input_form = document.querySelector("#player1-input-form");
         input_form.style.visibility = "visible";
-   
-        
-
     });
 
+    const player1InputButton = document.querySelector("#player1InputButton");
+    player1InputButton.addEventListener("click", () => {
+
+        let player1_input_form = document.querySelector("#player1-input-form");
+
+        let xInput, yInput;
+
+        for (let index = 0; index < player1_input_form.length; index++) {
+            let element = player1_input_form.elements[index].value;
+            if (element) {
+                if (index == 0) {
+                    yInput = element;
+                }
+                if (index == 1) {
+                    xInput = element;
+                }
+            }
+        }
+        yInput = parseInt(yInput);
+        xInput = parseInt(xInput);
+        board[yInput][xInput] = player1.playSymbol;
+
+        console.log(board[yInput][xInput]);
+
+        let spanElement = document.querySelector(`#row-${yInput+1}-span-${xInput+1}`);
+        spanElement.textContent = board[yInput][xInput];
+    })
 })();
