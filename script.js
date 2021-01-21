@@ -9,7 +9,7 @@
                   factory: need multiples, "players"
 */
 
-const Player = (name, playSymbol) => {
+function Player(name, playSymbol) {
     return { name, playSymbol };
 }
 
@@ -31,7 +31,6 @@ const Player = (name, playSymbol) => {
     }
 })();
 
-
 (function playGame() {
     // How the game will play out
     // 1. Ask player for name & playSymbol
@@ -43,16 +42,33 @@ const Player = (name, playSymbol) => {
     // let playerName = prompt("Please enter your name");
     // let playerGameSymbol = prompt("Please enter your symbol that you'll play with");
     
-    // let player1 = Player(playerName, playerGameSymbol);
+    let player1;
+
     const button = document.querySelector("#gameStartButton");
     button.addEventListener("click", () => {
 
         let main_form = document.querySelector("#main-form");
+        // !! player1 = Player(playerName, playerGameSymbol)
+        let playerName, playerGameSymbol;
+        for (let index = 0; index < main_form.length; index++) {
+            let element = main_form.elements[index].value;
+            if (element) {
+                if (index == 0) {
+                    playerName = element;
+                }
+                if (index == 1) {
+                    playerGameSymbol = element;
+                }
+            }
+        }
+
+        player1 = Player(playerName, playerGameSymbol);
+
         main_form.style.visibility = "hidden";
 
         let main_div = document.querySelector("#main-div");
         main_div.style.visibility = "visible";
-        
-    })
+   
+    });
 
 })();
