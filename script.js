@@ -9,9 +9,13 @@
                   factory: need multiples, "players"
 */
 
+const Player = (name, playSymbol) => {
+    return { name, playSymbol };
+}
 
 (function gameBoard() {
     let board = [];
+
     // Populates board array with 'B' ([B]lank spaces)
     for (let i = 0; i < 3; i++) {
         board[i] = [];
@@ -27,6 +31,28 @@
     }
 })();
 
-const Player = (name, playSymbol) => {
-    return { name, playSymbol };
-}
+
+(function playGame() {
+    // How the game will play out
+    // 1. Ask player for name & playSymbol
+    // 2. Game starts
+    // 3. Let player go first
+    // 4. AI then goes
+    // 5. Game ends either (3 consecutive gameSymbols) || (board is full)
+
+    // let playerName = prompt("Please enter your name");
+    // let playerGameSymbol = prompt("Please enter your symbol that you'll play with");
+    
+    // let player1 = Player(playerName, playerGameSymbol);
+    const button = document.querySelector("#gameStartButton");
+    button.addEventListener("click", () => {
+
+        let main_form = document.querySelector("#main-form");
+        main_form.style.visibility = "hidden";
+
+        let main_div = document.querySelector("#main-div");
+        main_div.style.visibility = "visible";
+        
+    })
+
+})();
