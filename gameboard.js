@@ -1,5 +1,5 @@
 let board = [];
-
+let blankSpaceOnBoard = [[0,1,2], [0,1,2], [0,1,2]];
 
 function gameBoard(board) {
 
@@ -21,4 +21,4 @@ function gameBoard(board) {
 gameBoard(board);
 
 'use strict';
-export {board}
+export {board, blankSpaceOnBoard}

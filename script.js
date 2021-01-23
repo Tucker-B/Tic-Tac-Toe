@@ -1,5 +1,5 @@
 
-import {board} from "./gameboard.js";
+import {board, blankSpaceOnBoard} from "./gameboard.js";
 
 /*
     1. Store gameboard as an array inside of a Gameboard object
@@ -13,6 +13,21 @@ import {board} from "./gameboard.js";
 function Player(name, playSymbol) {
     return { name, playSymbol };
 }
+
+// Changes span elements for webpage, deletes blank space in blankSpaceOnBoard[]
+function play(blankSpaceOnBoard, gameSymbol, xInput, yInput) {
+    // 1. Change element in document
+    let spanElement = document.querySelector(`#row-${yInput+1}-span-${xInput+1}`);
+    spanElement.textContent = board[yInput][xInput]; 
+
+    // 2. Change spot in board[] to no longer be 'B'
+    yInput = parseInt(yInput);
+    xInput = parseInt(xInput);
+    board[yInput][xInput] = gameSymbol;
+
+    // 3. access blankSpaceOnBoard[] and delete that specific index
+    blankSpaceOnBoard[yInput].splice(xInput, 1);
+} 
 
 (function playGame() {
     // How the game will play out
@@ -29,7 +44,7 @@ function Player(name, playSymbol) {
 
     const gameStartButton = document.querySelector("#gameStartButton");
     gameStartButton.addEventListener("click", () => {
-
+        // Retrieving gameSymbol and playerName from main-form
         let main_form = document.querySelector("#main-form");
         // !! player1 = Player(playerName, playerGameSymbol)
         let playerName, playerGameSymbol;
@@ -74,13 +89,9 @@ function Player(name, playSymbol) {
                 }
             }
         }
-        yInput = parseInt(yInput);
-        xInput = parseInt(xInput);
-        board[yInput][xInput] = player1.playSymbol;
 
         console.log(board[yInput][xInput]);
 
-        let spanElement = document.querySelector(`#row-${yInput+1}-span-${xInput+1}`);
-        spanElement.textContent = board[yInput][xInput];
+        play(blankSpaceOnBoard, 'X', xInput, yInput);
     })
 })();
