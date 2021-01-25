@@ -1,4 +1,21 @@
+/*
+    ** TODO_LIST **
+    1. Add win-condition/gamestop functionality where 
+    (3 symbols line up || impossible to do so anymore), whichever comes first.
 
+    2. Make board not be full of 'B's, and instead be blank with
+    nice horizontal and vertical lines separating the rows & columns.
+
+    3. Add stylizing to page to make it look prettier and less bland.
+
+    4. Add functionality for 2 players.
+
+    5. Add statistics tracking (# of times winning)
+
+    6. Create WIN / LOSE Screen popup after game
+
+    7. AI Difficulty Options
+*/
 import {board, blankSpaceOnBoard} from "./gameboard.js";
 import {play} from "./play.js";
 import {getComputerGameSymbol, computerPlay} from "./computer_ai.js";
