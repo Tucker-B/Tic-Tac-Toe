@@ -2,14 +2,6 @@
 import {board, blankSpaceOnBoard} from "./gameboard.js";
 import {play} from "./play.js";
 import {getComputerGameSymbol, computerPlay} from "./computer_ai.js";
-/*
-    1. Store gameboard as an array inside of a Gameboard object
-    2. Player objects
-    3. Game mechanics object
-    // Side note: use as few global names as possible
-    //            modules: only need one of it, so "gameBoard", "display"
-                  factory: need multiples, "players"
-*/
 
 function Player(name, playSymbol) {
     return { name, playSymbol };
@@ -23,9 +15,6 @@ function Player(name, playSymbol) {
     // 4. AI then goes
     // 5. Game ends either (3 consecutive gameSymbols) || (board is full)
 
-    // let playerName = prompt("Please enter your name");
-    // let playerGameSymbol = prompt("Please enter your symbol that you'll play with");
-    
     let player1;
 
     const gameStartButton = document.querySelector("#gameStartButton");
@@ -75,8 +64,7 @@ function Player(name, playSymbol) {
                 }
             }
         }
-
-        console.log(board[yInput][xInput]);
+        console.log("Player1: [" + yInput + "," + xInput + "]");
 
         play(board, blankSpaceOnBoard, 'X', xInput, yInput);
         let computerGameSymbol = getComputerGameSymbol('X');

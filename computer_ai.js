@@ -1,11 +1,3 @@
-// How computer AI will function
-// 0. Assign computer a gameSymbol
-// 1. After player1's turn, begin
-// 2. Search board[] for blank spots ('B')
-// 3. Randomly pick one from blank spots and 
-// assign it to AI's gamesymbol
-
-import { board, blankSpaceOnBoard } from "./gameboard.js";
 import {play} from "./play.js";
 
 let computerGameSymbol = '';
@@ -39,12 +31,12 @@ function computerPlay(board, blankSpaceOnBoard, computerGameSymbol) {
     // b. Create rand var within that range
     // c. Set computerXInput & computerYInput to each
     computerYInput = rowsWithBlankSpace[getRandNum(0, rowsWithBlankSpace.length - 1)];
-    computerXInput = blankSpaceOnBoard[getRandNum(0, blankSpaceOnBoard[computerYInput].length - 1)];
+    computerXInput = blankSpaceOnBoard[computerYInput][getRandNum(0, blankSpaceOnBoard[computerYInput].length - 1)];
 
     // 2. Then call play()
     play(board, blankSpaceOnBoard, computerGameSymbol, computerXInput, computerYInput);
 
-
+    console.log("ComputerAI: [" + computerYInput + "," + computerXInput + "]");
 }
 
 
