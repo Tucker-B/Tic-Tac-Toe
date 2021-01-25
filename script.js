@@ -1,6 +1,7 @@
 
 import {board, blankSpaceOnBoard} from "./gameboard.js";
-
+import {play} from "./play.js";
+import {getComputerGameSymbol, computerPlay} from "./computer_ai.js";
 /*
     1. Store gameboard as an array inside of a Gameboard object
     2. Player objects
@@ -14,23 +15,7 @@ function Player(name, playSymbol) {
     return { name, playSymbol };
 }
 
-// Changes span elements for webpage, deletes blank space in blankSpaceOnBoard[]
-function play(blankSpaceOnBoard, gameSymbol, xInput, yInput) {
-
-    // 1. Change spot in board[] to no longer be 'B'
-    yInput = parseInt(yInput);
-    xInput = parseInt(xInput);
-    board[yInput][xInput] = gameSymbol;
-
-    // 2. Change element in document
-    let spanElement = document.querySelector(`#row-${yInput+1}-span-${xInput+1}`);
-    spanElement.textContent = gameSymbol;
-
-    // 3. access blankSpaceOnBoard[] and delete that specific index
-    blankSpaceOnBoard[yInput].splice(xInput, 1);
-} 
-
-(function playGame() {
+(function game() {
     // How the game will play out
     // 1. Ask player for name & playSymbol
     // 2. Game starts
@@ -93,6 +78,8 @@ function play(blankSpaceOnBoard, gameSymbol, xInput, yInput) {
 
         console.log(board[yInput][xInput]);
 
-        play(blankSpaceOnBoard, 'X', xInput, yInput);
+        play(board, blankSpaceOnBoard, 'X', xInput, yInput);
+        let computerGameSymbol = getComputerGameSymbol('X');
+        computerPlay(board, blankSpaceOnBoard, computerGameSymbol);
     })
 })();

@@ -5,9 +5,15 @@
 // 3. Randomly pick one from blank spots and 
 // assign it to AI's gamesymbol
 
+import { board, blankSpaceOnBoard } from "./gameboard.js";
+import {play} from "./play.js";
 
 let computerGameSymbol = '';
+let computerXInput, computerYInput;
 
+function getRandNum(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
 
 function getComputerGameSymbol(playerGameSymbol) {
     if (playerGameSymbol == 'X') {
@@ -21,13 +27,25 @@ function getComputerGameSymbol(playerGameSymbol) {
     return computerGameSymbol;
 }
 
-function computerPlay(boardsBlankSpaces) {
+function computerPlay(board, blankSpaceOnBoard, computerGameSymbol) {
+    // 1. Get random blank space and set it equal to xInput & yInput
+    // a. Determine what is available
+    let rowsWithBlankSpace = [];
     for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board.length; j++) {
-            const element = board[j];
-            if (board[i][j] == 'B') {
-                
-            }
+        for (let j = 0; j < blankSpaceOnBoard[i].length; j++) {
+            rowsWithBlankSpace.push(i);
         }
     }
+    // b. Create rand var within that range
+    // c. Set computerXInput & computerYInput to each
+    computerYInput = rowsWithBlankSpace[getRandNum(0, rowsWithBlankSpace.length - 1)];
+    computerXInput = blankSpaceOnBoard[getRandNum(0, blankSpaceOnBoard[computerYInput].length - 1)];
+
+    // 2. Then call play()
+    play(board, blankSpaceOnBoard, computerGameSymbol, computerXInput, computerYInput);
+
+
 }
+
+
+export {getComputerGameSymbol, computerPlay}
