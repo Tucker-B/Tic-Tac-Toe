@@ -30,7 +30,7 @@ function Player(name, playSymbol) {
     // 2. Game starts
     // 3. Let player go first
     // 4. AI then goes
-    // 5. Game ends either (3 consecutive gameSymbols) || (board is full)
+    // 5. Game ends either (3 symbols line up || impossible to do so anymore)
 
     let player1;
 
@@ -82,9 +82,13 @@ function Player(name, playSymbol) {
             }
         }
         console.log("Player1: [" + yInput + "," + xInput + "]");
-
-        play(board, blankSpaceOnBoard, 'X', xInput, yInput);
-        let computerGameSymbol = getComputerGameSymbol('X');
-        computerPlay(board, blankSpaceOnBoard, computerGameSymbol);
+        if (board[yInput][xInput] == 'B') {
+            play(board, blankSpaceOnBoard, 'X', xInput, yInput);
+            let computerGameSymbol = getComputerGameSymbol('X');
+            computerPlay(board, blankSpaceOnBoard, computerGameSymbol);
+        } else {
+            alert("Sorry, that space on the board isn't available. Try again.");
+        }
+        
     })
 })();
