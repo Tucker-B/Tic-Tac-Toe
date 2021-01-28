@@ -16,7 +16,7 @@
 
     7. AI Difficulty Options
 */
-import {board, blankSpaceOnBoard} from "./gameboard.js";
+import {board, blankSpaceOnBoard, checkForWinCondition} from "./gameboard.js";
 import {play} from "./play.js";
 import {getComputerGameSymbol, computerPlay} from "./computer_ai.js";
 
@@ -32,6 +32,10 @@ function Player(name, playSymbol) {
     // 4. AI then goes
     // 5. Game ends either (3 symbols line up || impossible to do so anymore)
 
+    // 1. Check top row, then middle, then bottom
+    // 2. Check top column, then middle, then bottom
+    // 3. Check diagonal top left to bottom right
+    // 4. Check diagonal top right to bottom left
     let player1;
 
     const gameStartButton = document.querySelector("#gameStartButton");
@@ -81,11 +85,18 @@ function Player(name, playSymbol) {
                 }
             }
         }
+
         console.log("Player1: [" + yInput + "," + xInput + "]");
+
         if (board[yInput][xInput] == 'B') {
             play(board, blankSpaceOnBoard, 'X', xInput, yInput);
+
             let computerGameSymbol = getComputerGameSymbol('X');
+            checkForWinCondition(board, 'X', computerGameSymbol);
+            
             computerPlay(board, blankSpaceOnBoard, computerGameSymbol);
+
+            checkForWinCondition(board, 'X', computerGameSymbol);
         } else {
             alert("Sorry, that space on the board isn't available. Try again.");
         }
