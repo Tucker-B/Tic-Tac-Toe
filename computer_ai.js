@@ -39,5 +39,4 @@ function computerPlay(board, blankSpaceOnBoard, computerGameSymbol) {
     console.log("ComputerAI: [" + computerYInput + "," + computerXInput + "]");
 }
 
-
 export {getComputerGameSymbol, computerPlay}

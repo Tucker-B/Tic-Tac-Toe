@@ -1,6 +1,7 @@
 let board = [];
 let blankSpaceOnBoard = [[0,1,2], [0,1,2], [0,1,2]];
 
+// Checks if there are 3 consecutive characters/symbols in a row on the board
 function checkBoardRows(board, playerGameSymbol, computerGameSymbol) {
     // Check each row
     for (let i = 0; i < 3; i++) {
@@ -25,7 +26,7 @@ function checkBoardRows(board, playerGameSymbol, computerGameSymbol) {
     // If return hasn't been called yet, return "" to indicate no one has won yet.
     return "";
 }
-
+// Checks if there are 3 consecutive characters/symbols in a column on the board
 function checkBoardColumns(board, playerGameSymbol, computerGameSymbol) {
 
     // Check each column
@@ -50,7 +51,7 @@ function checkBoardColumns(board, playerGameSymbol, computerGameSymbol) {
     // If return hasn't been called yet, return "" to indicate no one has won yet.
     return "";
 }
-
+// Checks if there are 3 consecutive characters/symbols diagonally on the board
 function checkBoardDiagonals(board, playerGameSymbol, computerGameSymbol) {
     // Check [0,0] then [1,1] then [2,2]
     let player1SymbolCounter = 0;
@@ -96,25 +97,32 @@ function checkBoardDiagonals(board, playerGameSymbol, computerGameSymbol) {
 }
 
 function checkForWinCondition(board, playerGameSymbol, computerGameSymbol) {
+    // Checks if there are 3 consecutive characters/symbols in a row on the board
     let rowResult = checkBoardRows(board, playerGameSymbol, computerGameSymbol);
+    // Checks if there are 3 consecutive characters/symbols in a column on the board
     let columnResult = checkBoardColumns(board, playerGameSymbol, computerGameSymbol);
+    // Checks if there are 3 consecutive characters/symbols diagonally on the board
     let diagonalResult = checkBoardDiagonals(board, playerGameSymbol, computerGameSymbol);
-    // Alerts who won
+    // Alerts who won, and then reloads the page to start a new game
     if (rowResult != "") {
+
         alert(`${rowResult}`);
         window.location.reload(false);
+
     } else if (columnResult != "") {
+
         alert(`${columnResult}`);
         window.location.reload(false);
+
     } else if (diagonalResult != "") {
+
         alert(`${diagonalResult}`);
         window.location.reload(false);
     }
 }
 
 (function gameBoard(board) {
-
-    // Populates board array with 'B' ([B]lank spaces)
+    // Populates board array with 'B' (Blank spaces)
     for (let i = 0; i < 3; i++) {
         board[i] = [];
         for (let j = 0; j < 3; j++) {
